@@ -22,7 +22,7 @@
   --light-disabled-bg: #e0e0e0;
   --light-disabled-text: #a0a0a0;
 
-  /* Dark Mode */
+  /* Dark Mode (Kept for reference, but not used by light-dark() anymore) */
   --dark-bg: #111827; /* A very dark blue-gray */
   --dark-surface: #1c2a44; /* Darker than sapphire */
   --dark-text-primary: var(--pearl-white);
@@ -50,8 +50,8 @@
 body {
   font-family: 'EB Garamond', serif;
   margin: 0;
-  background-color: light-dark(var(--light-bg), var(--dark-bg));
-  color: light-dark(var(--light-text-primary), var(--dark-text-primary));
+  background-color: var(--light-bg);
+  color: var(--light-text-primary);
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -61,15 +61,15 @@ body {
 }
 
 .container {
-  background-color: light-dark(var(--light-surface), var(--dark-surface));
+  background-color: var(--light-surface);
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 4px 6px -1px light-dark(var(--light-shadow-color-1), var(--dark-shadow-color-1)), 0 2px 4px -2px light-dark(var(--light-shadow-color-2), var(--dark-shadow-color-2));
+  box-shadow: 0 4px 6px -1px var(--light-shadow-color-1), 0 2px 4px -2px var(--light-shadow-color-2);
   width: 90%;
   max-width: 800px;
   text-align: center;
   margin-top: 20px;
-  border: 1px solid light-dark(var(--light-border), var(--dark-border));
+  border: 1px solid var(--light-border);
 }
 
 .logo-container {
@@ -87,13 +87,13 @@ body {
   letter-spacing: 3px;
   margin-top: 15px;
   margin-bottom: 20px;
-  text-shadow: 1px 1px 3px light-dark(rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
 p {
   font-family: 'EB Garamond', serif;
   margin-bottom: 25px;
-  color: light-dark(var(--light-text-secondary), var(--dark-text-secondary));
+  color: var(--light-text-secondary);
   line-height: 1.6;
   font-size: 1.1em;
 }
@@ -107,10 +107,10 @@ p {
 }
 
 .suggestion-chip {
-  background-color: light-dark(var(--light-surface), var(--dark-card-bg));
-  color: light-dark(var(--light-text-secondary), var(--dark-text-secondary));
+  background-color: var(--light-surface);
+  color: var(--light-text-secondary);
   padding: 8px 16px;
-  border: 1px solid light-dark(var(--light-border), var(--dark-border));
+  border: 1px solid var(--light-border);
   border-radius: 20px;
   cursor: pointer;
   font-family: 'Lato', sans-serif;
@@ -120,24 +120,24 @@ p {
 }
 
 .suggestion-chip:hover {
-  background-color: light-dark(var(--light-card-back-bg), var(--dark-card-back-bg));
+  background-color: var(--light-card-back-bg);
   border-color: var(--mystical-gold);
-  color: light-dark(var(--light-text-primary), var(--dark-text-primary));
+  color: var(--light-text-primary);
   transform: translateY(-2px);
 }
 
 .suggestion-chip.active {
-  background-color: light-dark(var(--deep-sapphire-blue), var(--dark-primary));
-  color: light-dark(var(--pearl-white), var(--deep-sapphire-blue));
-  border-color: light-dark(var(--deep-sapphire-blue), var(--dark-primary));
+  background-color: var(--deep-sapphire-blue);
+  color: var(--pearl-white);
+  border-color: var(--deep-sapphire-blue);
   font-weight: 700;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 
 button {
-  background-color: light-dark(var(--deep-sapphire-blue), var(--dark-primary));
-  color: light-dark(var(--light-button-text), var(--deep-sapphire-blue));
+  background-color: var(--deep-sapphire-blue);
+  color: var(--light-button-text);
   padding: 14px 28px;
   border: none;
   border-radius: 8px;
@@ -151,25 +151,25 @@ button {
 }
 
 button:hover:not(:disabled) {
-  background-color: light-dark(#142b4b, #7aa3e0);
+  background-color: #142b4b;
   transform: translateY(-2px);
 }
 
 button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px light-dark(rgba(26, 54, 93, 0.3), rgba(138, 180, 248, 0.5));
+  box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.3);
 }
 
 button:disabled {
-  background-color: light-dark(var(--light-disabled-bg), var(--dark-disabled-bg));
-  color: light-dark(var(--light-disabled-text), var(--dark-disabled-text));
+  background-color: var(--light-disabled-bg);
+  color: var(--light-disabled-text);
   cursor: not-allowed;
   box-shadow: none;
   transform: none;
 }
 
 .error-message {
-  color: light-dark(var(--light-error), var(--dark-error));
+  color: var(--light-error);
   margin-top: 20px;
   font-weight: 500;
   min-height: 1.5em;
@@ -177,7 +177,7 @@ button:disabled {
 }
 
 .error-message.loading {
-  color: light-dark(var(--deep-sapphire-blue), var(--dark-primary));
+  color: var(--deep-sapphire-blue);
 }
 
 .flashcards-container {
@@ -206,7 +206,7 @@ button:disabled {
   transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
   transform-style: preserve-3d;
   border-radius: 10px;
-  box-shadow: 0 1px 2px light-dark(var(--light-shadow-color-2), var(--dark-shadow-color-2));
+  box-shadow: 0 1px 2px var(--light-shadow-color-2);
 }
 
 .flashcard.flipped .flashcard-inner {
@@ -258,34 +258,34 @@ button:disabled {
 .flashcard-back::before {
     top: 10px;
     left: 10px;
-    border-top: 3px solid light-dark(var(--deep-sapphire-blue), var(--dark-primary));
-    border-left: 3px solid light-dark(var(--deep-sapphire-blue), var(--dark-primary));
+    border-top: 3px solid var(--deep-sapphire-blue);
+    border-left: 3px solid var(--deep-sapphire-blue);
     border-top-left-radius: 10px;
 }
 .flashcard-back::after {
     bottom: 10px;
     right: 10px;
-    border-bottom: 3px solid light-dark(var(--deep-sapphire-blue), var(--dark-primary));
-    border-right: 3px solid light-dark(var(--deep-sapphire-blue), var(--dark-primary));
+    border-bottom: 3px solid var(--deep-sapphire-blue);
+    border-right: 3px solid var(--deep-sapphire-blue);
     border-bottom-right-radius: 10px;
 }
 
 
 .flashcard-front {
-  background-color: light-dark(var(--deep-sapphire-blue), var(--dark-surface));
+  background-color: var(--deep-sapphire-blue);
   /* border: 2px solid var(--mystical-gold); Replaced by pseudo-elements */
 }
 
 .flashcard-back {
-  background-color: light-dark(var(--light-card-back-bg), var(--dark-card-back-bg));
+  background-color: var(--light-card-back-bg);
   transform: rotateY(180deg);
-  /* border: 2px solid light-dark(var(--deep-sapphire-blue), var(--dark-primary)); Replaced by pseudo-elements */
+  /* border: 2px solid var(--deep-sapphire-blue); Replaced by pseudo-elements */
 }
 
 
 .flashcard:hover .flashcard-inner, .flashcard:focus-visible .flashcard-inner {
   transform: translateY(-5px) rotateY(var(--card-rotation, 0deg));
-  box-shadow: 0 4px 8px light-dark(var(--light-shadow-color-1), var(--dark-shadow-color-1));
+  box-shadow: 0 4px 8px var(--light-shadow-color-1);
 }
 
 .flashcard.flipped:hover .flashcard-inner, .flashcard.flipped:focus-visible .flashcard-inner {
@@ -296,7 +296,7 @@ button:disabled {
   font-family: 'Georgia', serif;
   font-size: 1.3em;
   font-weight: 500;
-  color: light-dark(var(--pearl-white), var(--dark-primary));
+  color: var(--pearl-white);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
@@ -304,22 +304,22 @@ button:disabled {
 
 .definition {
   font-size: 1.0em;
-  color: light-dark(var(--light-text-secondary), var(--dark-text-primary));
+  color: var(--light-text-secondary);
   line-height: 1.4;
 }
 
 .course-form-container {
   margin-top: 50px;
   padding: 30px;
-  border: 1px solid light-dark(var(--light-border), var(--dark-border));
+  border: 1px solid var(--light-border);
   border-radius: 12px;
-  background-color: light-dark(var(--light-bg), #1c2a44);
+  background-color: var(--light-bg);
 }
 
 .course-form-container h3 {
   font-family: 'Cinzel', serif;
   font-size: 1.5em;
-  color: light-dark(var(--deep-sapphire-blue), var(--dark-primary));
+  color: var(--deep-sapphire-blue);
   margin-top: 0;
   margin-bottom: 25px;
   text-transform: uppercase;
@@ -336,10 +336,10 @@ button:disabled {
   padding: 12px 15px;
   font-family: 'Lato', sans-serif;
   font-size: 1em;
-  border: 1px solid light-dark(var(--light-border), var(--dark-border));
+  border: 1px solid var(--light-border);
   border-radius: 8px;
-  background-color: light-dark(var(--light-surface), var(--dark-surface));
-  color: light-dark(var(--light-text-primary), var(--dark-text-primary));
+  background-color: var(--light-surface);
+  color: var(--light-text-primary);
   transition: border-color 0.2s, box-shadow 0.2s;
   min-width: 0; /* Important for flexbox shrinking */
 }
@@ -347,7 +347,7 @@ button:disabled {
 .form-input:focus-visible {
   outline: none;
   border-color: var(--mystical-gold);
-  box-shadow: 0 0 0 3px light-dark(rgba(184, 134, 11, 0.2), rgba(184, 134, 11, 0.4));
+  box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.2);
 }
 
 #submitCourseInfo {
@@ -370,13 +370,13 @@ button:disabled {
   bottom: 0;
   margin: auto;
   border: 3px solid transparent;
-  border-top-color: light-dark(var(--pearl-white), var(--deep-sapphire-blue));
+  border-top-color: var(--pearl-white);
   border-radius: 50%;
   animation: spin 1s ease infinite;
 }
 
 #submitCourseInfo.success {
-  background-color: light-dark(var(--accent-deep-emerald), var(--dark-cta)) !important;
+  background-color: var(--accent-deep-emerald) !important;
   color: var(--pearl-white) !important;
 }
 
@@ -387,7 +387,7 @@ button:disabled {
 
 
 .form-success-message {
-  color: light-dark(var(--accent-deep-emerald), var(--dark-cta));
+  color: var(--accent-deep-emerald);
   font-weight: 500;
   font-family: 'Lato', sans-serif;
   overflow: hidden;
@@ -414,8 +414,8 @@ footer {
   width: 100%;
   margin-top: 40px;
   padding-top: 20px;
-  border-top: 1px solid light-dark(var(--light-border), var(--dark-border));
-  color: light-dark(var(--light-text-secondary), var(--dark-text-secondary));
+  border-top: 1px solid var(--light-border);
+  color: var(--light-text-secondary);
   font-size: 0.9em;
   font-family: 'Lato', sans-serif;
 }
