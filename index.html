@@ -1,0 +1,105 @@
+<head>
+  <title>Blue Horizon | Cố Vấn Tài Chính Cá Nhân</title>
+  <script type="importmap">
+  {
+    "imports": {
+      "@google/genai": "https://esm.sh/@google/genai@^0.7.0"
+    }
+  }
+  </script>
+  <!-- Add Google Fonts Link with Vietnamese subset -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:wght@400;500&family=Lato:wght@400;700&display=swap&subset=vietnamese" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="logo-container">
+      <svg viewBox="40 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Blue Horizon Wealth Advisor Logo">
+        <!-- Chữ chính -->
+        <g font-family="Arial, sans-serif" font-weight="bold">
+          <!-- BlueH (cố định cạnh phải tại x=210) -->
+          <text x="210" y="80" font-size="60" fill="#1a365d" text-anchor="end">BlueH</text>
+      
+          <!-- Mặt trời Helios (giữ nguyên) -->
+          <g transform="translate(248, 50)">
+            <g>
+              <path d="M0,-18 L4,-18 L0,-38 L-4,-18 Z" fill="#b8860b"/>
+              <path d="M0,-18 L3,-18 L0,-28 L-3,-18 Z" fill="#b8860b" transform="rotate(22.5)"/>
+              <path d="M0,-18 L4,-18 L0,-38 L-4,-18 Z" fill="#b8860b" transform="rotate(45)"/>
+              <path d="M0,-18 L3,-18 L0,-28 L-3,-18 Z" fill="#b8860b" transform="rotate(67.5)"/>
+              <path d="M0,-18 L4,-18 L0,-38 L-4,-18 Z" fill="#b8860b" transform="rotate(90)"/>
+              <path d="M0,-18 L3,-18 L0,-28 L-3,-18 Z" fill="#b8860b" transform="rotate(112.5)"/>
+              <path d="M0,-18 L4,-18 L0,-38 L-4,-18 Z" fill="#b8860b" transform="rotate(135)"/>
+              <path d="M0,-18 L3,-18 L0,-28 L-3,-18 Z" fill="#b8860b" transform="rotate(157.5)"/>
+              <path d="M0,-18 L4,-18 L0,-38 L-4,-18 Z" fill="#b8860b" transform="rotate(180)"/>
+              <path d="M0,-18 L3,-18 L0,-28 L-3,-18 Z" fill="#b8860b" transform="rotate(202.5)"/>
+              <path d="M0,-18 L4,-18 L0,-38 L-4,-18 Z" fill="#b8860b" transform="rotate(225)"/>
+              <path d="M0,-18 L3,-18 L0,-28 L-3,-18 Z" fill="#b8860b" transform="rotate(247.5)"/>
+              <path d="M0,-18 L4,-18 L0,-38 L-4,-18 Z" fill="#b8860b" transform="rotate(270)"/>
+              <path d="M0,-18 L3,-18 L0,-28 L-3,-18 Z" fill="#b8860b" transform="rotate(292.5)"/>
+              <path d="M0,-18 L4,-18 L0,-38 L-4,-18 Z" fill="#b8860b" transform="rotate(315)"/>
+              <path d="M0,-18 L3,-18 L0,-28 L-3,-18 Z" fill="#b8860b" transform="rotate(337.5)"/>
+            </g>
+            <circle cx="0" cy="0" r="18" fill="#b8860b"/>
+          </g>
+      
+          <text x="286" y="80" font-size="60" fill="#1a365d">rizon</text>
+        </g>
+      
+        <!-- WEALTH ADVISOR: W trùng trục B (~66.6), R trùng trục H (~190) -->
+        <!-- Bù nửa bề rộng W (~8px) và R (~6px): x≈59, textLength≈137 -->
+        <text
+          x="59" y="110"
+          font-family="Arial, sans-serif"
+          font-size="14"
+          font-weight="600"
+          fill="#b8860b"
+          letter-spacing="4px"
+          textLength="137"
+          lengthAdjust="spacingAndGlyphs">WEALTH ADVISOR</text>
+      
+        <!-- Nhóm đường chân trời: thu nhỏ ~80%, vệt trên thẳng, vệt dưới chồng vệt giữa -->
+        <g transform="translate(225,156) scale(0.8) translate(-225,-156)">
+          <!-- Vệt DÀI NHẤT ở TRÊN: THẲNG NGANG -->
+          <path fill="#b8860b" opacity="0.88" d="M80,142 L370,142 L390,146 L60,146 Z"/>
+      
+          <!-- Vệt GIỮA (cong nhẹ) -->
+          <path fill="#b8860b" opacity="0.9" d="
+            M106,150
+            C152,146 185,145 205,145 L245,145
+            C265,145 298,146 354,150
+            L372,153 352,156
+            C300,159 265,160 245,160 L205,160
+            C185,160 152,159 110,156
+            L96,153 Z"/>
+      
+          <!-- Vệt NGẮN NHẤT ở DƯỚI: chồng một phần lên vệt giữa -->
+          <path fill="#b8860b" opacity="0.95" transform="translate(0,-6)" d="
+            M122,142
+            C164,140 188,139 205,139 L245,139
+            C262,139 293,140 333,142
+            L349,143 336,144
+            C298,146 262,147 245,147 L205,147
+            C188,147 164,146 126,144
+            L114,143 Z"/>
+        </g>
+      </svg>
+    </div>
+    <h2 class="academy-title">Blue Academy</h2>
+    <p>
+      Tạo các thẻ học về tài chính cá nhân. Chọn một chủ đề để bắt đầu.
+    </p>
+    <div id="suggestionsContainer" class="suggestions-container">
+      <!-- Suggestion chips will be generated here -->
+    </div>
+    <button id="generateButton">Tạo Thẻ Tài Chính</button>
+    <div id="errorMessage" class="error-message"></div>
+    <div id="flashcardsContainer" class="flashcards-container">
+      <!-- Flashcards will be generated here -->
+    </div>
+    <footer>
+      <p>© Blue Horizon | Nâng cao Hiểu biết Tài chính</p>
+    </footer>
+  </div>
+</body>
