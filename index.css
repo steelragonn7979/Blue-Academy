@@ -308,6 +308,108 @@ button:disabled {
   line-height: 1.4;
 }
 
+.course-form-container {
+  margin-top: 50px;
+  padding: 30px;
+  border: 1px solid light-dark(var(--light-border), var(--dark-border));
+  border-radius: 12px;
+  background-color: light-dark(var(--light-bg), #1c2a44);
+}
+
+.course-form-container h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5em;
+  color: light-dark(var(--deep-sapphire-blue), var(--dark-primary));
+  margin-top: 0;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.form-inputs-wrapper {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-input {
+  flex-grow: 1;
+  padding: 12px 15px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
+  border: 1px solid light-dark(var(--light-border), var(--dark-border));
+  border-radius: 8px;
+  background-color: light-dark(var(--light-surface), var(--dark-surface));
+  color: light-dark(var(--light-text-primary), var(--dark-text-primary));
+  transition: border-color 0.2s, box-shadow 0.2s;
+  min-width: 0; /* Important for flexbox shrinking */
+}
+
+.form-input:focus-visible {
+  outline: none;
+  border-color: var(--mystical-gold);
+  box-shadow: 0 0 0 3px light-dark(rgba(184, 134, 11, 0.2), rgba(184, 134, 11, 0.4));
+}
+
+#submitCourseInfo {
+  position: relative;
+}
+
+#submitCourseInfo.sending {
+  color: transparent;
+  cursor: wait;
+}
+
+#submitCourseInfo.sending::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid transparent;
+  border-top-color: light-dark(var(--pearl-white), var(--deep-sapphire-blue));
+  border-radius: 50%;
+  animation: spin 1s ease infinite;
+}
+
+#submitCourseInfo.success {
+  background-color: light-dark(var(--accent-deep-emerald), var(--dark-cta)) !important;
+  color: var(--pearl-white) !important;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+.form-success-message {
+  color: light-dark(var(--accent-deep-emerald), var(--dark-cta));
+  font-weight: 500;
+  font-family: 'Lato', sans-serif;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+}
+
+.form-success-message.visible {
+  margin-top: 15px;
+  max-height: 5em; /* Large enough value */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .form-inputs-wrapper {
+    flex-direction: column;
+  }
+}
+
 footer {
   width: 100%;
   margin-top: 40px;

@@ -19,6 +19,11 @@ const flashcardsContainer = document.getElementById(
   'flashcardsContainer',
 ) as HTMLDivElement;
 const errorMessage = document.getElementById('errorMessage') as HTMLDivElement;
+const courseInfoForm = document.getElementById('courseInfoForm') as HTMLFormElement;
+const userEmail = document.getElementById('userEmail') as HTMLInputElement;
+const userPhone = document.getElementById('userPhone') as HTMLInputElement;
+const formSuccessMessage = document.getElementById('formSuccessMessage') as HTMLDivElement;
+
 
 const ai = new GoogleGenAI({apiKey: process.env.API_KEY});
 let selectedTopic = '';
@@ -34,6 +39,16 @@ const suggestions = [
   'Cổ phiếu và Trái phiếu',
   'Quỹ tương hỗ & ETF',
   'Lạm phát và Lãi suất',
+  'Đầu tư Bất động sản',
+  'Tiền điện tử',
+  'Quản lý rủi ro đầu tư',
+  'Phân tích Kỹ thuật',
+  'Tài chính Hành vi',
+  'Lập kế hoạch Di sản',
+  'Tự do Tài chính',
+  'Kinh tế học cho Nhà đầu tư',
+  'Các loại Lệnh giao dịch',
+  'Đa dạng hóa Danh mục',
 ];
 
 // Disable the generate button initially
@@ -175,4 +190,45 @@ generateButton.addEventListener('click', async () => {
       generateButton.disabled = false;
     }
   }
+});
+
+courseInfoForm.addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent actual form submission
+
+  const submitButton = document.getElementById('submitCourseInfo') as HTMLButtonElement;
+  const originalButtonText = 'Nhận thông tin khóa học';
+  const email = userEmail.value;
+  
+  // Basic validation
+  if (!email || !email.includes('@')) {
+    userEmail.focus();
+    // Maybe add a visual shake or error border to the input
+    return;
+  }
+
+  // 1. Loading state
+  submitButton.disabled = true;
+  submitButton.classList.add('sending');
+
+  // Simulate network request
+  setTimeout(() => {
+    // 2. Success state
+    submitButton.classList.remove('sending');
+    submitButton.classList.add('success');
+    submitButton.textContent = '✓ Gửi thành công!';
+    
+    formSuccessMessage.classList.add('visible');
+    
+    userEmail.value = '';
+    userPhone.value = '';
+
+    // 3. Reset after a few seconds
+    setTimeout(() => {
+      submitButton.classList.remove('success');
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+      formSuccessMessage.classList.remove('visible');
+    }, 3000);
+
+  }, 1500);
 });
